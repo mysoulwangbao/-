@@ -44,7 +44,24 @@ haoba: 1
 
 请按任意键继续. . .
 */
+	//unordered_map查找//find函数的使用key找
+	unordered_map<string, int>::const_iterator it = my.find("nihao");
+	if (it == my.end())
+		cout << "Not find !!" << endl;
+	else
+		cout << "Found " << it->first << " is " << it->second << endl;
 
+	my.at("nihao") = 10;
+	my["wangbao"] = 99;
+	//display(my, "-------------");
+
+	//unordered_map删除
+	my.erase(my.begin());//通过位置删除，迭代器,以及范围删除
+	my.erase("wangbao");//通过key删除
+	
+	//unordered_map交换
+	my.swap(my1);//覆盖my = my1；
+	display(my, "-------------");
 	
 	return 0;
 }
