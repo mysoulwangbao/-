@@ -1,0 +1,50 @@
+#include<unordered_map>
+#include<string>
+void display(unordered_map<string, int>my, string str)
+{
+	cout << str << endl;
+	for (auto& x : my)
+	{
+		cout << x.first << ": " << x.second << endl;
+	}
+	cout << endl;
+}
+
+int main()
+{
+	//unordered_map::insert(尾部插入)
+	unordered_map<string, int>my1,my = { {"nihao",1} };//①
+	cout << "有效元素个数 " << my.size() << " 是否为空 " << my.empty() << " 支持的最大元素个数 " << my.max_size() << endl;
+	
+	pair<string, int>ins("wangbao", 1);
+	my.insert(ins);//复制插入
+
+	my.insert(make_pair<string, int>("haoba", 1));//移动插入
+	my1.insert(my.begin(), my.end());//范围插入
+
+	my.insert({ {"world",1},{"china",1} });//初始化数组插入
+	my["nihao"] = 8;//数组形式插入和修改
+	cout << "有效元素个数 " << my.size() << " 是否为空 " << my.empty() << " 支持的最大元素个数 " << my.max_size() << endl;
+	display(my, "my contains: ");
+	display(my1, "my contains: ");
+	/*
+	有效元素个数 1 是否为空 0 支持的最大元素个数 107374182
+有效元素个数 5 是否为空 0 支持的最大元素个数 107374182
+my contains:
+nihao: 8
+wangbao: 1
+haoba: 1
+world: 1
+china: 1
+
+my contains:
+wangbao: 1
+nihao: 1
+haoba: 1
+
+请按任意键继续. . .
+*/
+
+	
+	return 0;
+}
